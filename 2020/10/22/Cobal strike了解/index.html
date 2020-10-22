@@ -1,0 +1,215 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bbutterf1y's Blog | Bbutterf1y's Blog</title><meta name="author" content="Bbutterf1y,1401198693@qq.com"><meta name="copyright" content="Bbutterf1y"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="一、软件安装  0.注意事项：  Cobalt Strike 需要Oracle Java 1.8，Oracle Java 11, 或 OpenJDK 11环境。  解压前关闭杀毒软件。  1.kali java环境配置  a.下载deb包安装  或下载压缩包解压文件并移动至&#x2F;opt  tar -xzvf jdkxxxx.tar.gz（xxxx之自己所下载版本名称）  mv xxxx &#x2F;opt  c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bbutterf1y&#39;s Blog">
+<meta property="og:url" content="http://example.com/2020/10/22/Cobal%20strike%E4%BA%86%E8%A7%A3/index.html">
+<meta property="og:site_name" content="Bbutterf1y&#39;s Blog">
+<meta property="og:description" content="一、软件安装  0.注意事项：  Cobalt Strike 需要Oracle Java 1.8，Oracle Java 11, 或 OpenJDK 11环境。  解压前关闭杀毒软件。  1.kali java环境配置  a.下载deb包安装  或下载压缩包解压文件并移动至&#x2F;opt  tar -xzvf jdkxxxx.tar.gz（xxxx之自己所下载版本名称）  mv xxxx &#x2F;opt  c">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/category.png">
+<meta property="article:published_time" content="2020-10-22T13:33:22.440Z">
+<meta property="article:modified_time" content="2020-10-22T13:34:50.614Z">
+<meta property="article:author" content="Bbutterf1y">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/category.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2020/10/22/Cobal%20strike%E4%BA%86%E8%A7%A3/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="code-5tOvHxcsIh"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: {"text":"人来,人往,勿失,勿忘","fontSize":"15px"},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-10-22 21:34:50'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-paper-plane"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#install-JAVA-JDK"><span class="toc-number">1.</span> <span class="toc-text">install JAVA JDK</span></a></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(/img/category.png)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Bbutterf1y's Blog</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-paper-plane"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">无题</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-10-22T13:33:22.440Z" title="发表于 2020-10-22 21:33:22">2020-10-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-10-22T13:34:50.614Z" title="更新于 2020-10-22 21:34:50">2020-10-22</time></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><p>一、软件安装</p>
+<p> 0.注意事项：</p>
+<p> Cobalt Strike 需要Oracle Java 1.8，Oracle Java 11, 或 OpenJDK 11环境。</p>
+<p> 解压前关闭杀毒软件。</p>
+<p> 1.kali java环境配置</p>
+<p> a.下载deb包安装</p>
+<p> 或下载压缩包解压文件并移动至/opt</p>
+<p> tar -xzvf jdkxxxx.tar.gz（xxxx之自己所下载版本名称）</p>
+<p> mv xxxx /opt</p>
+<p> cd /opt/xxxx</p>
+<p> b.设置环境变量</p>
+<p> 执行 vim ~/.bashrc ，添加下列内容</p>
+<h1 id="install-JAVA-JDK"><a href="#install-JAVA-JDK" class="headerlink" title="install JAVA JDK"></a>install JAVA JDK</h1><p>export JAVA_HOME= /usr/lib/jvm/javaxxxx/（默认安装位置，如果是解压则是/opt/jdkxxxx）</p>
+<p> export CLASSPATH=.:${JAVA_HOME}/lib</p>
+<p> export PATH=${JAVA_HOME}/bin:$PATH</p>
+<p> 保存退出</p>
+<p> 执行 source ~/.bashrc</p>
+<p> c.安装并注册</p>
+<p> update-alternatives –install /usr/bin/java java /opt/jdkxxxx/bin/java 1</p>
+<p> update-alternatives –install /usr/bin/javac javac /opt/jdkxxxx/bin/javac 1</p>
+<p> update-alternatives –set java /opt/jdkxxxx/bin/java</p>
+<p> update-alternatives –set javac /opt/jdkxxxx/bin/javac（加粗字体根据实际安装路径填写）</p>
+<p> 运行java -version查看安装是否成功</p>
+<p> 注：如果运行报错</p>
+<p> 是系统原有的OpenJDK设置干扰了手动安装的JDK</p>
+<p> 解决办法：在环境变量里添加unset _JAVA_OPTIONS</p>
+<p> vim ~/.bashrc 添加unset _JAVA_OPTINOS后重启</p>
+<p> 2.安装cs（cs可以在Windows、Liunx、MacOS中使用，大致方法相同）</p>
+<p> 以下以kali使用为例</p>
+<p> a.将cs包解压之后拷贝至kali中</p>
+<p> b.运行团队服务器teamserver</p>
+<p> ./teamserver 本机ip 密码</p>
+<p> c.运行客户端</p>
+<p> java -XX:+AggressiveHeap -XX:+UseParallelGC -jar cobaltstrike.jar</p>
+<p> 输入刚才的密码连接即可</p>
+<p> 二、基本介绍</p>
+<p> 1.目录结构：</p>
+<pre><code> * </code></pre>
+<p> agscript：拓展应用的脚本</p>
+<pre><code> * </code></pre>
+<p> c2lint：用于检查profile的错误异常</p>
+<pre><code> * </code></pre>
+<p> teamserver：服务端程序</p>
+<pre><code> * </code></pre>
+<p> cobaltstrike：客户端程序</p>
+<pre><code> * </code></pre>
+<p> license.pdf：许可证文件</p>
+<pre><code> * </code></pre>
+<p> logs：目标记录与目标主机的相关信息</p>
+<pre><code> * </code></pre>
+<p> update：更新</p>
+<pre><code> * </code></pre>
+<p> third-party：第三方工具</p>
+<p>2.基本流程：</p>
+<p> 创建监听器</p>
+<p> 生成木马</p>
+<p> 开启web服务</p>
+<p> 运行木马</p>
+<p> 导出报告</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:1401198693@qq.com">Bbutterf1y</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/10/22/Cobal%20strike%E4%BA%86%E8%A7%A3/">http://example.com/2020/10/22/Cobal%20strike%E4%BA%86%E8%A7%A3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Bbutterf1y's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/category.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/10/22/%E8%99%9A%E6%8B%9F%E6%9C%BAkali%E7%A1%AC%E7%9B%98%E6%89%A9%E5%B1%95/"><img class="prev-cover" src="/img/category.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2020/10/22/Wireshark%E8%BF%87%E6%BB%A4%E8%AF%AD%E6%B3%95/"><img class="next-cover" src="/img/category.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav></article></main><footer id="footer" style="background: ture"><div id="footer-wrap"><div class="copyright">&copy;2020 By Bbutterf1y</div><div class="footer_custom_text">本博客由<a href="https://demo.jerryc.me/"  target="_blank">butterfly</a>主题大力赞助支持<br>--&nbsp;&nbsp;&nbsp;嗨，别忘了开心每一天！--</div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> {preloader.endLoading()})</script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" async="async" mobile="false"></script></div></body></html>

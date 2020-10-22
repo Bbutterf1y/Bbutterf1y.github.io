@@ -1,0 +1,185 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bbutterf1y's Blog | Bbutterf1y's Blog</title><meta name="author" content="Bbutterf1y,1401198693@qq.com"><meta name="copyright" content="Bbutterf1y"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="桥接模式：直接连物理网络 虚拟机的虚拟网卡通过虚拟网桥连接到主机网卡，虚拟机和物理机同时使用主机网卡，如同一台独立的主机连接在路由器上，分配自己的ip。 虚拟机、物理机、外网之间都能互相进行通信 虚拟机和物理机的交互：虚拟机-&gt;主机网卡-&gt;路由器-&gt;主机网卡-&gt;物理机 可采用桥接的情景：物理机所处的网络中有DHCP服务，能够自动为网络内的主机分配IP地址。 不适合的情景：校">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bbutterf1y&#39;s Blog">
+<meta property="og:url" content="http://example.com/2020/10/22/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Bbutterf1y&#39;s Blog">
+<meta property="og:description" content="桥接模式：直接连物理网络 虚拟机的虚拟网卡通过虚拟网桥连接到主机网卡，虚拟机和物理机同时使用主机网卡，如同一台独立的主机连接在路由器上，分配自己的ip。 虚拟机、物理机、外网之间都能互相进行通信 虚拟机和物理机的交互：虚拟机-&gt;主机网卡-&gt;路由器-&gt;主机网卡-&gt;物理机 可采用桥接的情景：物理机所处的网络中有DHCP服务，能够自动为网络内的主机分配IP地址。 不适合的情景：校">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/category.png">
+<meta property="article:published_time" content="2020-10-22T13:23:51.601Z">
+<meta property="article:modified_time" content="2020-10-22T13:24:00.768Z">
+<meta property="article:author" content="Bbutterf1y">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/category.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2020/10/22/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E6%A8%A1%E5%BC%8F/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="code-5tOvHxcsIh"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: {"text":"人来,人往,勿失,勿忘","fontSize":"15px"},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: false,
+  postUpdate: '2020-10-22 21:24:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-paper-plane"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/category.png)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Bbutterf1y's Blog</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-paper-plane"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">无题</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-10-22T13:23:51.601Z" title="发表于 2020-10-22 21:23:51">2020-10-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-10-22T13:24:00.768Z" title="更新于 2020-10-22 21:24:00">2020-10-22</time></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><p>桥接模式：直接连物理网络</p>
+<p>虚拟机的虚拟网卡通过虚拟网桥连接到主机网卡，虚拟机和物理机同时使用主机网卡，如同一台独立的主机连接在路由器上，分配自己的ip。</p>
+<p>虚拟机、物理机、外网之间都能互相进行通信</p>
+<p>虚拟机和物理机的交互：虚拟机-&gt;主机网卡-&gt;路由器-&gt;主机网卡-&gt;物理机</p>
+<p>可采用桥接的情景：物理机所处的网络中有DHCP服务，能够自动为网络内的主机分配IP地址。</p>
+<p>不适合的情景：校园网，物理机拨号上网，可能内部虚拟机无法联网</p>
+<p>注：复制物理网络连接状态：在笔记本电脑或其他移动设备上使用虚拟机，请选择复制物理网络连接状态。当您在有线或无线网络之间进行移动时，该设置会导致IP 地址续订。</p>
+<p><img src="https://uploader.shimo.im/f/wnpC1VWK2aCTtQVW.png!thumbnail" alt="图片"></p>
+<p>NAT模式：用于共享主机的IP地址</p>
+<p>NAT（NetworkAddress Translation）网络地址转换，物理机为网关，虚拟机为子网。虚拟机的ip和物理机相同，由虚拟DHCP服务器分配。虚拟机和物理机处于不同的网段。</p>
+<p>虚拟机和物理机之间可以互相通信，虚拟网卡和虚拟机处于一个地址段，虚拟机和主机不同一个地址段，主机相当于虚拟机的网关，所以虚拟机能ping到主机的IP，但是主机ping不到虚拟机的IP。虚拟机能够访问外网，但是外网不能够访问虚拟机。</p>
+<p>注：默认情况下，外部网络无法访问到虚拟机，通过手动修改NAT设置实现端口转发功能，将外部网络发送到主机指定端口的数据转发到指定的虚拟机上。比如，我们在虚拟机的80端口上”建立”了一个站点，只要我们设置端口转发，将主机88端口上的数据转发给虚拟机的80端口，就可以让外部网络通过主机的88端口访问到虚拟机80端口上的站点。</p>
+<p><img src="https://uploader.shimo.im/f/1wpBtkbkhCmxgx0H.png!thumbnail" alt="图片"><img src="https://uploader.shimo.im/f/Sb6R67vtRWoQ2VYq.png!thumbnail" alt="图片"> <img src="https://uploader.shimo.im/f/rQDSBTRW5yZbQfbI.png!thumbnail" alt="图片"></p>
+<p>主机端口号是别的宿主机访问该虚拟机时，通过该虚拟机所在的宿主机的“IP”+“：”+主机端口号</p>
+<p>虚拟机端口号是虚拟机上哪个服务端、哪个软件接受数据，就写哪个端口。</p>
+<p><img src="https://uploader.shimo.im/f/zzw9CgjpcrHFjhpl.png!thumbnail" alt="图片"></p>
+<p>仅主机模式：与主机共享的专用网络</p>
+<p>与NAT模式唯一区别是不能连入外网。</p>
+<p>注：如果要使得虚拟机能联网，在主机上安装合适的路由或代理软件，或者在Windows系统的主机上使用Internet连接共享功能，将主机网卡共享给VMware Network Adapter VMnet1网卡，仍然可以让虚拟机连接到Internet或其他网络。</p>
+<p><img src="https://uploader.shimo.im/f/X3Le17KNZxrpDhnM.png!thumbnail" alt="图片"><img src="https://uploader.shimo.im/f/b2YFPCrsXqJgwkAX.png!thumbnail" alt="图片"><img src="https://uploader.shimo.im/f/tvQwvpc7Q4cQjPtc.png!thumbnail" alt="图片"><img src="https://uploader.shimo.im/f/8HmGm79jAbNtYWie.png!thumbnail" alt="图片"></p>
+<p>LAN区段：</p>
+<p>相当于模拟出一个交换机或集线器，把不同虚拟机连接起来，与物理机不进行数据交流，与外网也不进行数据交流，构建一个独立的网络。没有DHCP功能，需要手工配置IP或者单独配置DHCP服务器。</p>
+<ul>
+<li>VMnet0：用于虚拟桥接网络下的虚拟交换机</li>
+<li>VMnet1：用于虚拟Host-Only网络下的虚拟交换机</li>
+<li>VMnet8：用于虚拟NAT网络下的虚拟交换机</li>
+<li>VMware NetworkAdepter VMnet1：用于与Host-Only虚拟网络进行通信的虚拟网卡</li>
+<li>VMware NetworkAdepter VMnet8：用于与NAT虚拟网络进行通信的虚拟网卡</li>
+</ul>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:1401198693@qq.com">Bbutterf1y</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/10/22/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E6%A8%A1%E5%BC%8F/">http://example.com/2020/10/22/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E6%A8%A1%E5%BC%8F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Bbutterf1y's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/category.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/10/22/%E5%AE%89%E5%85%A8%E7%89%9B%E2%80%94%E2%80%94WireShark%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%88%86%E6%9E%90/"><img class="prev-cover" src="/img/category.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2020/10/22/%E6%89%8B%E6%9C%BA%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%A3%85kali/"><img class="next-cover" src="/img/category.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav></article></main><footer id="footer" style="background: ture"><div id="footer-wrap"><div class="copyright">&copy;2020 By Bbutterf1y</div><div class="footer_custom_text">本博客由<a href="https://demo.jerryc.me/"  target="_blank">butterfly</a>主题大力赞助支持<br>--&nbsp;&nbsp;&nbsp;嗨，别忘了开心每一天！--</div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> {preloader.endLoading()})</script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" async="async" mobile="false"></script></div></body></html>
