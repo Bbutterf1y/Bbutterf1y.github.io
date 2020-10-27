@@ -1,14 +1,17 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bbutterf1y's Blog | Bbutterf1y's Blog</title><meta name="author" content="Bbutterf1y,1401198693@qq.com"><meta name="copyright" content="Bbutterf1y"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="注：本文主要内容参考自《GitHub入门与实践》（作者：大塚泓记） Git： 1.功能：分散型版本管理系统，可以管理更新的历史记录，方便恢复误删除，回滚到特定阶段等  （分散型系统示意图） 2.安装（以Git for Windows为例）：  组件选择：已经默认勾选 选择编辑器：选择自己喜欢的编辑器 设置环境变量：选择”Use Git Bash only”：只会使用到Git中附属的Git Bash">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>git和Github使用教程 | Bbutterf1y's Blog</title><meta name="keywords" content="小白向,学习,读书笔记"><meta name="author" content="Bbutterf1y,1401198693@qq.com"><meta name="copyright" content="Bbutterf1y"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="记录了github使用的全过程和git的语法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Bbutterf1y&#39;s Blog">
+<meta property="og:title" content="git和Github使用教程">
 <meta property="og:url" content="http://example.com/2020/10/22/git%E5%92%8CGitHub%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Bbutterf1y&#39;s Blog">
-<meta property="og:description" content="注：本文主要内容参考自《GitHub入门与实践》（作者：大塚泓记） Git： 1.功能：分散型版本管理系统，可以管理更新的历史记录，方便恢复误删除，回滚到特定阶段等  （分散型系统示意图） 2.安装（以Git for Windows为例）：  组件选择：已经默认勾选 选择编辑器：选择自己喜欢的编辑器 设置环境变量：选择”Use Git Bash only”：只会使用到Git中附属的Git Bash">
+<meta property="og:description" content="记录了github使用的全过程和git的语法">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/picture/category.png">
-<meta property="article:published_time" content="2020-10-22T13:14:12.199Z">
-<meta property="article:modified_time" content="2020-10-22T13:14:23.450Z">
+<meta property="article:published_time" content="2020-10-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-10-27T11:12:00.889Z">
 <meta property="article:author" content="Bbutterf1y">
+<meta property="article:tag" content="小白向">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="读书笔记">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/picture/category.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2020/10/22/git%E5%92%8CGitHub%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="code-5tOvHxcsIh"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
   root: '/',
@@ -78,8 +81,8 @@ var saveToLocal = {
   isPost: true,
   isHome: false,
   isHighlightShrink: false,
-  isSidebar: false,
-  postUpdate: '2020-10-22 21:14:23'
+  isSidebar: true,
+  postUpdate: '2020-10-27 19:12:00'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -141,13 +144,11 @@ var saveToLocal = {
     if (t === 'dark') activateDarkMode()
     else if (t === 'light') activateLightMode()
   }
-})()</script><meta name ="referrer" content="no-referrer-when-downgrade" /><meta name="generator" content="Hexo 5.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">11</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">3</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-paper-plane"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/picture/category.png)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Bbutterf1y's Blog</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-paper-plane"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">无题</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-10-22T13:14:12.199Z" title="发表于 2020-10-22 21:14:12">2020-10-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-10-22T13:14:23.450Z" title="更新于 2020-10-22 21:14:23">2020-10-22</time></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/10/22/git%E5%92%8CGitHub%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2020/10/22/git%E5%92%8CGitHub%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" itemprop="commentCount"></span></a></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><p>注：本文主要内容参考自《GitHub入门与实践》（作者：大塚泓记）</p>
-<p>Git：</p>
-<p>1.功能：分散型版本管理系统，可以管理更新的历史记录，方便恢复误删除，回滚到特定阶段等</p>
-<p><img src= "/picture/loading1.gif" data-lazy-src="https://uploader.shimo.im/f/NpF7yc0QgslcROed.png!thumbnail" alt="图片"></p>
+})()</script><meta name ="referrer" content="no-referrer-when-downgrade" /><meta name="generator" content="Hexo 5.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">9</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">5</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">3</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-paper-plane"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">Git：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%8A%9F%E8%83%BD"><span class="toc-number">1.1.</span> <span class="toc-text">1.功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85%EF%BC%88%E4%BB%A5Git-for-Windows%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">2.安装（以Git for Windows为例）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">3.使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.3.1.</span> <span class="toc-text">初始设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">1.3.2.</span> <span class="toc-text">基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C"><span class="toc-number">1.3.3.</span> <span class="toc-text">分支操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%94%B9%E6%8F%90%E4%BA%A4%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">1.3.4.</span> <span class="toc-text">更改提交的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E9%80%81%E8%87%B3%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-number">1.3.5.</span> <span class="toc-text">推送至远程仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E8%8E%B7%E5%8F%96"><span class="toc-number">1.3.6.</span> <span class="toc-text">从远程仓库获取</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-git%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.4.</span> <span class="toc-text">4.git学习</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GitHub%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">GitHub：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%8A%9F%E8%83%BD-1"><span class="toc-number">2.1.</span> <span class="toc-text">1.功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.2.</span> <span class="toc-text">2.介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8-1"><span class="toc-number">2.3.</span> <span class="toc-text">3.使用</span></a></li></ol></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(/picture/category.png)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Bbutterf1y's Blog</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-paper-plane"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">git和Github使用教程</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-10-21T16:00:00.000Z" title="发表于 2020-10-22 00:00:00">2020-10-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-10-27T11:12:00.889Z" title="更新于 2020-10-27 19:12:00">2020-10-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0/">计算机学习</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/10/22/git%E5%92%8CGitHub%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2020/10/22/git%E5%92%8CGitHub%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" itemprop="commentCount"></span></a></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><p>注：本文主要内容参考自《GitHub入门与实践》（作者：大塚泓记）</p>
+<h1 id="Git："><a href="#Git：" class="headerlink" title="Git："></a>Git：</h1><h2 id="1-功能"><a href="#1-功能" class="headerlink" title="1.功能"></a>1.功能</h2><p>分散型版本管理系统，可以管理更新的历史记录，方便恢复误删除，回滚到特定阶段等</p>
+<p><img src= "/picture/loading1.gif" data-lazy-src="https://i.loli.net/2020/10/27/gliMO8je5sUmDTJ.png" alt="Image.png"></p>
 <p>（分散型系统示意图）</p>
-<p>2.安装（以Git for Windows为例）：</p>
-<ul>
+<h2 id="2-安装（以Git-for-Windows为例）"><a href="#2-安装（以Git-for-Windows为例）" class="headerlink" title="2.安装（以Git for Windows为例）"></a>2.安装（以Git for Windows为例）</h2><ul>
 <li>组件选择：已经默认勾选</li>
 <li>选择编辑器：选择自己喜欢的编辑器</li>
 <li>设置环境变量：选择”Use Git Bash only”：只会使用到Git中附属的Git Bash命令提示符；选择”Git from the command line and also from 3rd-party software”：不仅可以使用Git中的Git Bash还可以使用cmd和Powershell等（建议）</li>
@@ -155,22 +156,19 @@ var saveToLocal = {
 <li>换行符处理：选择”Checkout Windows-style,commit Unix-style line endings”，换行符编辑时自动转换为CRLF（Windows中以此为换行的），提交时自动转换为LF（Github中公开的代码大部分以Mac和Linux中的LF为换行符）</li>
 <li>Git Bash默认终端等后续设置：默认选择</li>
 </ul>
-<p>3.使用：</p>
-<p>初始设置：</p>
-<ul>
+<h2 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h2><h3 id="初始设置"><a href="#初始设置" class="headerlink" title="初始设置"></a>初始设置</h3><ul>
 <li>设置姓名和邮箱地址（设置的姓名邮箱地址会用在Git提交日志中，由于Github上公开仓库时，姓名和邮箱地址会随着日志一同被公开）：<ul>
 <li>git config –global user.name “Firstname Lastname”</li>
-<li>git config –global user.email “<a href="mailto:&#x79;&#x6f;&#x75;&#114;&#95;&#101;&#x6d;&#97;&#105;&#x6c;&#64;&#x65;&#120;&#97;&#109;&#x70;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#109;">&#x79;&#x6f;&#x75;&#114;&#95;&#101;&#x6d;&#97;&#105;&#x6c;&#64;&#x65;&#120;&#97;&#109;&#x70;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#109;</a>“</li>
+<li>git config –global user.email “<a href="mailto:&#121;&#111;&#117;&#114;&#x5f;&#x65;&#x6d;&#x61;&#x69;&#x6c;&#64;&#x65;&#x78;&#97;&#x6d;&#x70;&#x6c;&#x65;&#x2e;&#x63;&#x6f;&#109;">&#121;&#111;&#117;&#114;&#x5f;&#x65;&#x6d;&#x61;&#x69;&#x6c;&#64;&#x65;&#x78;&#97;&#x6d;&#x70;&#x6c;&#x65;&#x2e;&#x63;&#x6f;&#109;</a>“</li>
 </ul>
 </li>
 <li>提高命令输出可读性：<ul>
 <li>git config –global color.ui auto</li>
 </ul>
 </li>
-<li>—————————-（上面两项设置可以直接在~/.gitconfig中修改）</li>
+<li>上面两项设置可以直接在~/.gitconfig中修改</li>
 </ul>
-<p>基本操作：</p>
-<ul>
+<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><ul>
 <li>git init —— 初始化仓库<ul>
 <li>使用git进行版本管理，需要初始化仓库</li>
 <li>初始化命令<ul>
@@ -211,8 +209,7 @@ var saveToLocal = {
 </ul>
 </li>
 </ul>
-<p>分支操作：</p>
-<ul>
+<h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><ul>
 <li>git branch —— 显示分支一览表<ul>
 <li>显示分支列表，并且确认自己所在的分支（自己所处的分支前面有*号）</li>
 </ul>
@@ -238,8 +235,7 @@ var saveToLocal = {
 </li>
 <li>git log –graph —— 以图表形式查看分支</li>
 </ul>
-<p>更改提交的操作</p>
-<ul>
+<h3 id="更改提交的操作"><a href="#更改提交的操作" class="headerlink" title="更改提交的操作"></a>更改提交的操作</h3><ul>
 <li>git reset  —— 回溯历史版本<ul>
 <li>git reset –hard 版本哈希值（可通过git log查询）</li>
 <li>回溯时可通过git reflog命令查看当前仓库的操作日志</li>
@@ -263,8 +259,7 @@ var saveToLocal = {
 </ul>
 </li>
 </ul>
-<p>推送至远程仓库</p>
-<ul>
+<h3 id="推送至远程仓库"><a href="#推送至远程仓库" class="headerlink" title="推送至远程仓库"></a>推送至远程仓库</h3><ul>
 <li>git remote add —— 添加远程仓库<ul>
 <li>git会将远程仓库的名称设置为origin（标识符）</li>
 </ul>
@@ -275,8 +270,7 @@ var saveToLocal = {
 </ul>
 </li>
 </ul>
-<p>从远程仓库获取</p>
-<ul>
+<h3 id="从远程仓库获取"><a href="#从远程仓库获取" class="headerlink" title="从远程仓库获取"></a>从远程仓库获取</h3><ul>
 <li>git clone —— 获取远程仓库<ul>
 <li>默认在master分支，并且将origin设置为远程仓库的标识符。</li>
 <li>git branch -a 可以同时显示本地仓库和远程仓库的分支信息</li>
@@ -291,10 +285,9 @@ var saveToLocal = {
 </ul>
 </li>
 </ul>
-<p>4.git学习：Pro git 学习文档<a target="_blank" rel="noopener" href="https://www.progit.cn/">https://www.progit.cn</a></p>
+<h2 id="4-git学习"><a href="#4-git学习" class="headerlink" title="4.git学习"></a>4.git学习</h2><p>Pro git 学习文档<a target="_blank" rel="noopener" href="https://www.progit.cn/">https://www.progit.cn</a></p>
 <p>LearnGitBranching 实验学习<a target="_blank" rel="noopener" href="https://learngitbranching.js.org/?locale=zh_CN">https://learngitbranching.js.org/?locale=zh_CN</a></p>
-<p>GitHub：</p>
-<p>1.功能：主要提供托管git仓库的平台</p>
+<h1 id="GitHub："><a href="#GitHub：" class="headerlink" title="GitHub："></a>GitHub：</h1><h2 id="1-功能-1"><a href="#1-功能-1" class="headerlink" title="1.功能"></a>1.功能</h2><p>主要提供托管git仓库的平台</p>
 <ul>
 <li>Organization：统一管理账户和权限，团队开发使用organization账户</li>
 <li>Isuue：将任务或问题分配给一个issue进行追踪和管理的功能</li>
@@ -306,9 +299,9 @@ var saveToLocal = {
 </ul>
 </li>
 </ul>
-<p>2.介绍：</p>
+<h2 id="2-介绍"><a href="#2-介绍" class="headerlink" title="2.介绍"></a>2.介绍</h2><ul>
+<li><p>创建仓库页面</p>
 <ul>
-<li>创建仓库页面<ul>
 <li>Repository name：仓库名称</li>
 <li>Description：仓库说明描述，非必填项</li>
 <li>Public、Private：访问权限，private为收费服务</li>
@@ -317,13 +310,16 @@ var saveToLocal = {
 <li>Add a license：选择添加的许可协议文件</li>
 </ul>
 </li>
-<li>连接仓库：<ul>
+<li><p>连接仓库：</p>
+<ul>
 <li>README.md：文件内容会自动显示在仓库首页。一般会在文件中标明本仓库所含的软件的概要、使用流程、许可协议等信息</li>
 <li>Github Flavored Markdown：Github上Issue、评论、Wiki都可以用到Markdown语法</li>
 </ul>
 </li>
-<li>键盘快捷键：每个页面下shift + / 都可以打开键盘快捷键一览表</li>
-<li>仓库<ul>
+<li><p>键盘快捷键：每个页面下shift + / 都可以打开键盘快捷键一览表</p>
+</li>
+<li><p>仓库</p>
+<ul>
 <li>仓库页面t键可以直接搜索目录或文件</li>
 <li>查看差别可以通过直接修改URL<ul>
 <li>查看分支差别加   分支名…分支名</li>
@@ -333,37 +329,30 @@ var saveToLocal = {
 </li>
 </ul>
 </li>
-<li>Issue<ul>
-<li>发现软件BUG并报告向作者询问、探讨 列出准备实施的任务</li>
-<li>Tasklist语法类似于任务清单</li>
-</ul>
-</li>
-</ul>
-<p># 要完成的任务</p>
+<li><p>Issue</p>
 <ul>
-<li><p>[] 任务一</p>
+<li><p>发现软件BUG并报告向作者询问、探讨 列出准备实施的任务</p>
 </li>
-<li><p>[] 任务二</p>
+<li><p>Tasklist语法类似于任务清单</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 要完成的任务</span><br><span class="line">- [] 任务一</span><br><span class="line">- [] 任务二</span><br><span class="line">- [x] 任务三</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>[x] 任务三</p>
-<ul>
-<li>Issue提交时加#编号会关联编号对应的Issue，添加close #编号等会完成指令</li>
-<li>将Issue转换为Pull Request：编号互相通用</li>
+<li><p>Issue提交时加#编号会关联编号对应的Issue，添加close #编号等会完成指令</p>
+</li>
+<li><p>将Issue转换为Pull Request：编号互相通用</p>
+</li>
 </ul>
 </li>
-</ul>
+<li><p>Pull Request</p>
 <ul>
-<li>Pull Request<ul>
 <li>Conversation中用R直接引用别人的评论</li>
 <li>Files Changed在URL末尾加 ?w=1 就可以不显示空格的差别</li>
 </ul>
 </li>
 </ul>
-<p>3.使用：</p>
-<ul>
+<h2 id="3-使用-1"><a href="#3-使用-1" class="headerlink" title="3.使用"></a>3.使用</h2><ul>
 <li>使用前设置<ul>
 <li>设置SSH Key（Github连接已有仓库（Git）时的认证需要通过SSH的公开密钥认证方式进行）：<ul>
-<li>ssh -keygen -t rsa -C “<a href="mailto:&#121;&#111;&#117;&#x72;&#x5f;&#101;&#x6d;&#97;&#x69;&#108;&#64;&#101;&#x78;&#x61;&#x6d;&#112;&#108;&#101;&#x2e;&#x63;&#111;&#x6d;">&#121;&#111;&#117;&#x72;&#x5f;&#101;&#x6d;&#97;&#x69;&#108;&#64;&#101;&#x78;&#x61;&#x6d;&#112;&#108;&#101;&#x2e;&#x63;&#111;&#x6d;</a>“（创建账户时使用的邮箱）</li>
+<li>ssh -keygen -t rsa -C “<a href="mailto:&#x79;&#x6f;&#x75;&#x72;&#95;&#101;&#109;&#x61;&#x69;&#108;&#64;&#x65;&#x78;&#97;&#109;&#112;&#108;&#x65;&#46;&#99;&#x6f;&#x6d;">&#x79;&#x6f;&#x75;&#x72;&#95;&#101;&#109;&#x61;&#x69;&#108;&#64;&#x65;&#x78;&#97;&#109;&#112;&#108;&#x65;&#46;&#99;&#x6f;&#x6d;</a>“（创建账户时使用的邮箱）</li>
 <li>输入key的保存路径回车为默认路径</li>
 <li>输入密码</li>
 <li>再次输入密码（密码需要在认证时输入）</li>
@@ -386,7 +375,7 @@ var saveToLocal = {
 </ul>
 </li>
 <li>创建仓库：New repository</li>
-<li>公开代码：<ul>
+<li>==公开代码：<ul>
 <li>clone已有仓库：git clone SSH clone URL（可以使用SSH或者HTTPS链接）</li>
 <li>进入clone后的仓库：cd repository name</li>
 <li>提交（将代码文件提交至仓库，进行入版本管理系统）<ul>
@@ -394,7 +383,7 @@ var saveToLocal = {
 <li>git commit -m “提交信息，对这次提交的概述”（commit命令提交）</li>
 </ul>
 </li>
-<li>进行push：git push（push后github上的仓库就会被更新）</li>
+<li>进行push：git push（push后github上的仓库就会被更新）==</li>
 </ul>
 </li>
 <li>Pull Request （PR）<ul>
@@ -459,7 +448,7 @@ var saveToLocal = {
 <li>与master分支合并后立刻部署</li>
 </ul>
 </li>
-<li>发布式项目（以发布产品为目的的项目 git-flow）<ul>
+<li>发布式项目（以发布产品为目的的项目 git-flow）<ol>
 <li>从开发分支（develop）创建工作分支（feature branches），进行功能实现<ul>
 <li>master分支：保持着软件可以正常运行的状态，因此不能直接对master分支进行修改和提交</li>
 <li>develop分支：开发过程中的代码中心分支，维持着开发过程中的最新源代码</li>
@@ -501,18 +490,18 @@ var saveToLocal = {
 <li>从hotfix分支合并至develop分支，在Github中从hotfix分支向develop分支发送Pull Request即可</li>
 </ul>
 </li>
-<li>版本号分配规则：x.y.z<ul>
+<li>版本号分配规则：x.y.z<ol>
 <li>x为大版本更新或者版本不向下兼容，x+1，yz清零</li>
 <li>y为功能添加或删除，y+1，z清零</li>
 <li>z只在内部修改后+1</li>
-</ul>
+</ol>
+</li>
+</ol>
 </li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:1401198693@qq.com">Bbutterf1y</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/10/22/git%E5%92%8CGitHub%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">http://example.com/2020/10/22/git%E5%92%8CGitHub%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Bbutterf1y's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/picture/category.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/10/22/%E6%89%8B%E6%9C%BA%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%A3%85kali/"><img class="prev-cover" data-lazy-src="/picture/category.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2020/10/22/Python%E7%BC%96%E7%A8%8B%EF%BC%9A%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E8%B7%B5/"><img class="next-cover" data-lazy-src="/picture/category.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></article></main><footer id="footer" style="background-image: url(/picture/category.png)"><div id="footer-wrap"><div class="copyright">&copy;2020 By Bbutterf1y</div><div class="footer_custom_text">本博客由<a href="https://demo.jerryc.me/"  target="_blank">butterfly</a>主题大力赞助支持<br>--&nbsp;&nbsp;&nbsp;卿，别忘了开心每一天！--</div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:1401198693@qq.com">Bbutterf1y</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/10/22/git%E5%92%8CGitHub%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">http://example.com/2020/10/22/git%E5%92%8CGitHub%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Bbutterf1y's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%B0%8F%E7%99%BD%E5%90%91/">小白向</a><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a><a class="post-meta__tags" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a></div><div class="post_share"><div class="social-share" data-image="/picture/category.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/10/22/Wireshark%E8%BF%87%E6%BB%A4%E8%AF%AD%E6%B3%95/"><img class="prev-cover" data-lazy-src="/picture/category.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Wireshark过滤语法</div></div></a></div><div class="next-post pull-right"><a href="/2020/10/22/hello-world/"><img class="next-cover" data-lazy-src="/picture/category.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hello World</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/10/22/Python编程：从入门到实践/" title="python编程：从入门到实践"><img class="cover" data-lazy-src="/picture/category.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-22</div><div class="title">python编程：从入门到实践</div></div></a></div><div><a href="/2020/10/22/Cobal strike了解/" title="Cobal strike了解"><img class="cover" data-lazy-src="/picture/category.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-22</div><div class="title">Cobal strike了解</div></div></a></div><div><a href="/2020/10/22/Wireshark过滤语法/" title="Wireshark过滤语法"><img class="cover" data-lazy-src="/picture/category.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-22</div><div class="title">Wireshark过滤语法</div></div></a></div><div><a href="/2020/10/22/hexo+github搭建个人博客/" title="hexo+github搭建个人博客"><img class="cover" data-lazy-src="/picture/category.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-22</div><div class="title">hexo+github搭建个人博客</div></div></a></div><div><a href="/2020/10/22/虚拟机kali硬盘扩展/" title="虚拟机kali硬盘"><img class="cover" data-lazy-src="/picture/category.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-22</div><div class="title">虚拟机kali硬盘</div></div></a></div><div><a href="/2020/10/22/SQL注入/" title="SQL注入详解"><img class="cover" data-lazy-src="/picture/category.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-22</div><div class="title">SQL注入详解</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></article></main><footer id="footer" style="background-image: url(/picture/category.png)"><div id="footer-wrap"><div class="copyright">&copy;2020 By Bbutterf1y</div><div class="footer_custom_text">本博客由<a href="https://demo.jerryc.me/"  target="_blank">butterfly</a>主题大力赞助支持<br>--&nbsp;&nbsp;&nbsp;卿，别忘了开心每一天！--</div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
  <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
   endLoading: () => {
     document.body.style.overflow = 'auto';
@@ -536,7 +525,7 @@ window.addEventListener('load',()=> {preloader.endLoading()})</script><div class
       pageSize: '10',
       lang: 'zh-CN',
       recordIP: false,
-      serverURLs: '',
+      serverURLs: 'https://OwJ0U9mh.api.lncldglobal.com# This configuration is suitable for domestic custom domain name users, overseas version will be automatically detected (no need to manually fill in)',
       emojiCDN: '',
       emojiMaps: "",
       enableQQ: true,
