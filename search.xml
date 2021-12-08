@@ -54,20 +54,9 @@
     
     
     <entry>
-      <title></title>
-      <link href="inject/style.css"/>
-      <url>inject/style.css</url>
-      
-        <content type="html"><![CDATA[#page-header.not-index-bg{height:30rem;}]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>好兄弟萌のblog</title>
-      <link href="link/index.html"/>
-      <url>link/index.html</url>
+      <title>tags</title>
+      <link href="tags/index.html"/>
+      <url>tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -98,9 +87,20 @@
     
     
     <entry>
-      <title>tags</title>
-      <link href="tags/index.html"/>
-      <url>tags/index.html</url>
+      <title></title>
+      <link href="inject/style.css"/>
+      <url>inject/style.css</url>
+      
+        <content type="html"><![CDATA[#page-header.not-index-bg{height:30rem;}]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>好兄弟萌のblog</title>
+      <link href="link/index.html"/>
+      <url>link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
