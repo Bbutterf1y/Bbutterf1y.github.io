@@ -43,9 +43,9 @@
     
     
     <entry>
-      <title></title>
-      <link href="messageboard/test.html"/>
-      <url>messageboard/test.html</url>
+      <title>分类</title>
+      <link href="categories/index.html"/>
+      <url>categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -54,11 +54,22 @@
     
     
     <entry>
-      <title>分类</title>
-      <link href="categories/index.html"/>
-      <url>categories/index.html</url>
+      <title>好兄弟萌のblog</title>
+      <link href="link/index.html"/>
+      <url>link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="inject/style.css"/>
+      <url>inject/style.css</url>
+      
+        <content type="html"><![CDATA[#page-header.not-index-bg{height:30rem;}]]></content>
       
     </entry>
     
@@ -77,19 +88,8 @@
     
     <entry>
       <title></title>
-      <link href="inject/style.css"/>
-      <url>inject/style.css</url>
-      
-        <content type="html"><![CDATA[#page-header.not-index-bg{height:30rem;}]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>好兄弟萌のblog</title>
-      <link href="link/index.html"/>
-      <url>link/index.html</url>
+      <link href="messageboard/test.html"/>
+      <url>messageboard/test.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
