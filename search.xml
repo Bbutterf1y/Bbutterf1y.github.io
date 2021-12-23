@@ -32,17 +32,6 @@
     
     
     <entry>
-      <title>关于我</title>
-      <link href="about/index.html"/>
-      <url>about/index.html</url>
-      
-        <content type="html"><![CDATA[<p>ID：Bbutterf1y</p><p>在校学生</p><p>安全学习失败者</p><p>躺平选手</p><hr /><p>博主留言：欢迎来到我的博客，在这里我会不定期写下自己的一些学习笔记，一堆废话和希望能够帮助到一些人的文章。如果想要联系到我可以在主页戳我或者给我留言。如果文章中有什么错误望理解，谢谢。</p>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>分类</title>
       <link href="categories/index.html"/>
       <url>categories/index.html</url>
@@ -54,9 +43,20 @@
     
     
     <entry>
-      <title></title>
-      <link href="messageboard/test.html"/>
-      <url>messageboard/test.html</url>
+      <title>关于我</title>
+      <link href="about/index.html"/>
+      <url>about/index.html</url>
+      
+        <content type="html"><![CDATA[<p>ID：Bbutterf1y</p><p>在校学生</p><p>安全学习失败者</p><p>躺平选手</p><hr /><p>博主留言：欢迎来到我的博客，在这里我会不定期写下自己的一些学习笔记，一堆废话和希望能够帮助到一些人的文章。如果想要联系到我可以在主页戳我或者给我留言。如果文章中有什么错误望理解，谢谢。</p>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>好兄弟萌のblog</title>
+      <link href="link/index.html"/>
+      <url>link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -76,22 +76,22 @@
     
     
     <entry>
-      <title>好兄弟萌のblog</title>
-      <link href="link/index.html"/>
-      <url>link/index.html</url>
+      <title>留言板</title>
+      <link href="messageboard/index.html"/>
+      <url>messageboard/index.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>Hey!有什么想说的可以留在下面，看到会回复。</p><p>友链添加也可以留言，格式为：</p><p>​    - name: Bbutterf1y</p><p>​      link: <a href="http://www.bbutterf1y.top/">www.bbutterf1y.top</a></p><p>​      avatar: <a href="https://www.bbutterf1y.top/img/avatar.png">https://www.bbutterf1y.top/img/avatar.png</a></p><p>​      descr: 一个放置着乱七八糟的地方</p>]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>留言板</title>
-      <link href="messageboard/index.html"/>
-      <url>messageboard/index.html</url>
+      <title></title>
+      <link href="messageboard/test.html"/>
+      <url>messageboard/test.html</url>
       
-        <content type="html"><![CDATA[<p>Hey!有什么想说的可以留在下面，看到会回复。</p><p>友链添加也可以留言，格式为：</p><p>​    - name: Bbutterf1y</p><p>​      link: <a href="http://www.bbutterf1y.top/">www.bbutterf1y.top</a></p><p>​      avatar: <a href="https://www.bbutterf1y.top/img/avatar.png">https://www.bbutterf1y.top/img/avatar.png</a></p><p>​      descr: 一个放置着乱七八糟的地方</p>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
