@@ -54,17 +54,6 @@
     
     
     <entry>
-      <title>好兄弟萌のblog</title>
-      <link href="link/index.html"/>
-      <url>link/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title></title>
       <link href="inject/style.css"/>
       <url>inject/style.css</url>
@@ -90,6 +79,17 @@
       <title></title>
       <link href="messageboard/test.html"/>
       <url>messageboard/test.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>好兄弟萌のblog</title>
+      <link href="link/index.html"/>
+      <url>link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
